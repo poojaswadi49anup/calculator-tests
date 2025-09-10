@@ -29,7 +29,8 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-
+    need : build
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
