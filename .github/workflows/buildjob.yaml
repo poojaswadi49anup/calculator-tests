@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,13 +23,23 @@ jobs:
         run: |
           pip install robotframework
 
-      - name: Run Robot Framework tests
+      - name: Run python file
         run: |
-          mkdir results
-          robot --outputdir results test_calculator.robot
+          python3 calculater.py
 
-      - name: Upload Robot Framework results
-        uses: actions/upload-artifact@v4
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          name: robot-test-results
-          path: results/
+          python-version: "3.10"
+
+      - name: Run robotframework
+        run:
+          robot test_calculator.robot
