@@ -1,0 +1,39 @@
+name: Robot Framework CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install robotframework
+
+      - name: Run Python script
+        run: python calculator.py   # 👈 replace with your script
+
+      - name: Run Robot Framework tests
+        run: |
+          mkdir results
+          robot --outputdir results test_calculator.robot
+
+      - name: Upload Robot Framework results (always)
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: robot-test-results
+          path: results/
