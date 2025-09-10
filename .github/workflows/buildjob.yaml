@@ -39,6 +39,10 @@ jobs:
         with:
           python-version: "3.10"
 
+      - name: Install Robot Framework
+        run: |
+          pip install robotframework
+
       - name: Run robotframework
         run:
           robot test_calculator.robot
