@@ -11,7 +11,7 @@ Subtraction Test
     Should Be Equal As Integers    ${result}    7
 
 Multiplication Test
-    ${result}=    Multiply    5    5
+    ${result}=    Multiply    5    2
     Should Be Equal As Integers    ${result}    25
 
 Division Test
