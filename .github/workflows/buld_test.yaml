@@ -24,7 +24,7 @@ jobs:
           pip install robotframework
 
       - name: Run Python script
-        run: python calculator.py   # 👈 replace with your script
+        run: python calculater.py   # 👈 replace with your script
 
       - name: Run Robot Framework tests
         run: |
