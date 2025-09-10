@@ -25,4 +25,11 @@ jobs:
 
       - name: Run Robot Framework tests
         run: |
-          robot test_calculator.robot
+          mkdir results
+          robot --outputdir results test_calculator.robot
+
+      - name: Upload Robot Framework results
+        uses: actions/upload-artifact@v3
+        with:
+          name: robot-test-results
+          path: results/
