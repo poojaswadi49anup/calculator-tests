@@ -27,7 +27,6 @@ jobs:
         run: |
           python3 calculater.py
 
-jobs:
   test:
     runs-on: ubuntu-latest
 
