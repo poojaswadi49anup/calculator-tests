@@ -16,7 +16,6 @@ jobs:
 
       - name: Allow PowerShell scripts for this job
         run: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-        shell: pwsh
 
       - name: Install dependencies
         run: |
