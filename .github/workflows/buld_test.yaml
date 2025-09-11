@@ -14,10 +14,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # - name: Set up Python
-      #   uses: actions/setup-python@v4
-      #   with:
-      #     python-version: "3.10"
+      - name: Allow PowerShell scripts for this job
+        run: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+        shell: pwsh
 
       - name: Install dependencies
         run: |
@@ -25,6 +24,7 @@ jobs:
 
       - name: Run Python script
         run: python calculater.py
+
       - name: Run Robot Framework tests
         run: |
           mkdir results
