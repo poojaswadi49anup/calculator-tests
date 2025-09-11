@@ -14,20 +14,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Allow PowerShell scripts for this job
-        run: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-
       - name: Install dependencies
-        run: |
-          pip install robotframework
+        run: pip install robotframework
+        shell: cmd
 
       - name: Run Python script
         run: python calculater.py
+        shell: cmd
 
       - name: Run Robot Framework tests
         run: |
           mkdir results
           robot --outputdir results test_calculator.robot
+        shell: cmd
 
       - name: Upload Robot Framework results (always)
         if: always()
